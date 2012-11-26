@@ -6,7 +6,7 @@ configure :production do
     $redis = Redis.new(url: ENV["REDISGREEN_URL"], driver: :hiredis)
 end
 
-configure :development, :test do
+configure :test do
     $redis = Redis.new(url: ENV["WERCKER_REDIS_URL"], driver: :hiredis)
 end
 

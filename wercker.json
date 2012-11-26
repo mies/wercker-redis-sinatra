@@ -1,0 +1,12 @@
+{
+  "customSteps" : {
+    "setup_environment" : {
+      "commands": [
+        "export RAILS_ENV=test",
+        "export RACK_ENV=test",
+      ]
+    },
+    "services": {
+      "redis": true
+    }
+  }

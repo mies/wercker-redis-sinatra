@@ -1,5 +1,7 @@
 require 'sinatra'
 require 'redis'
+require 'json'
+require 'pp'
 
 configure :production do
     uri = URI.parse(ENV["REDISGREEN_URL"])
@@ -16,8 +18,13 @@ end
 
 
 get '/' do
+  "Transform!"
+end
+
+get '/decepticons.json' do
+  content_type :json
   decepticons = $redis.smembers('decepticons')
-  return decepticons
+  return decepticons.to_json
 end
 
 get '/add' do
@@ -25,6 +32,7 @@ get '/add' do
 end
 
 post '/add' do
-  $redis.sadd('decepticons', 'starscream')
+  data = JSON.parse(request.body.read)
+  $redis.sadd('decepticons', data["decepticon"])
   redirect '/'
 end

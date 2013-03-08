@@ -1,6 +1,6 @@
 {
-  "customSteps" : {
-    "setup_environment" : {
+  "custom steps" : {
+    "setup environment" : {
       "commands": [
         "export RAILS_ENV=test",
         "export RACK_ENV=test"
